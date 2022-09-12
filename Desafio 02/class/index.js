@@ -1,8 +1,9 @@
 const fs = require('fs');  
 
-class Container {         
-  constructor(pelicula) {
-    this.pelicula = pelicula;
+module.exports = class Container {    
+       
+  constructor(archivo) {
+    this.archivo = archivo;
   }
 
   async save(objeto) {
@@ -11,7 +12,7 @@ class Container {
         objeto[i].id = 1 + i;
       }
       console.log(`Se guardaron ${objeto.length} productos`);
-      await fs.promises.writeFile(this.pelicula, JSON.stringify(objeto)); // de objeto a Json
+      await fs.promises.writeFile(this.archivo, JSON.stringify(objeto,null,'\t')); // de objeto a Json
 
     } catch (error) 
     {
@@ -33,7 +34,7 @@ class Container {
 
   async getAll() {
     try {
-      let contenido = await fs.promises.readFile(this.pelicula, 'utf-8');
+      let contenido = await fs.promises.readFile(this.archivo, 'utf-8');
       console.log(contenido);
       return JSON.parse(contenido);
     } catch (error) {
@@ -46,7 +47,7 @@ class Container {
     try {
       const contenido = await this.getAll();
       const deleted = contenido.filter((producto) => producto.id !== id);
-      await fs.promises.writeFile(this.pelicula, JSON.stringify(deleted, null, 4));
+      await fs.promises.writeFile(this.archivo, JSON.stringify(deleted, null, 4));
       console.log('Eliminado');
     } catch (error) {
 
@@ -56,7 +57,7 @@ class Container {
 
   async deleteAll() {
     try {
-      await fs.promises.writeFile(this.pelicula, []);
+      await fs.promises.writeFile(this.archivo, []);
       console.log('Todos los productos fueron eliminados');
     } catch (error) {
 
@@ -65,4 +66,3 @@ class Container {
   }
 }
 
-module.exports = Container;
