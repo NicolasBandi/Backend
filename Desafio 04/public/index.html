@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/main.css">
+  <title>Nicolas Pedicino</title>
+</head>
+
+<body>
+  <div class="contenedorPrincipar contenedor">
+    <div class="contenedorPost contenedor">
+      <h2> POST</h2>
+      <div>
+      <form action="http://localhost:61906/api/productos" method="post">
+        <div class="conteiner">
+          <label for="title">Nombre del Producto</label>
+          <input type="text" name="title" placeholder="nombre del producto " required>
+        </div>
+        <div class="conteiner">
+          <label for="price">Precio del Producto</label>
+          <input type="number" name="price" placeholder="precio del producto" required>
+        </div>
+        <div class="conteiner">
+          <label for="thumbnail">Imagen del Producto</label>
+          <input type="text" name="thumbnail" placeholder="Link de la imagen del producto" required>
+        </div>
+        <div class="conteiner">
+          <input type="submit" value="Guardar">
+        </div>
+      </form>
+    </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

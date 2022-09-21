@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Dr.Strange In The Multiverse Of Madness",
+    "price": "15000",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_662700-MLA50929944161_072022-O.webp",
+    "id": 2
+  },
+  {
+    "name": "The Batman",
+    "price": "14990",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_706125-MLA50100616300_052022-O.webp",
+    "id": 3
+  },
+  {
+    "title": "Matrix Resurrection",
+    "price": "109990",
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_919857-MLA49283218450_032022-O.webp",
+    "id": 4
+  },
+  {
+    "id": 1
+  }
+]

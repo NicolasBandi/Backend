@@ -16,10 +16,10 @@ app.get("/", (req, res) => {
     );
 });
 
-app.get("/productos", async (req, res) => {
-    const resultado = await getProducts;
+  app.get("/productos", async (req, res) => {
+    const resultado = await products.getAll();
     res.send(resultado);
-  });
+});
 
   app.get("/productoRamdom", async (req, res) => {
     const resultado = await getProducts;
