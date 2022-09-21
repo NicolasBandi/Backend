@@ -31,18 +31,17 @@ module.exports = class Contenedor {
     }
   }
   
-  
-  /* Metodo para  Escribir en el archivo*/
-      async escribirArchivo(archivo, contenido) {
-        try {
-              await fs.writeFileSync(
-                    archivo,
-                    JSON.stringify(contenido, null, 2),
-                    "utf-8"
-              );
-        } catch (error) {
-              console.log(error.message);
-        }
+
+  async escribirArchivo(archivo, contenido) {
+    try {
+      await fs.writeFileSync(
+         archivo,
+         JSON.stringify(contenido, null, 2),
+         "utf-8"
+        );
+    } catch (error) {
+        console.log(error.message);
+    }
   }
 
   async leerArchivo(archivo) {
@@ -66,26 +65,24 @@ module.exports = class Contenedor {
         }
   }
 
- /*Metodo modificar para modificar un producto por la id*/
  async modificar(id, contenido) {
   try {
-        /*Primero verifica si existe el archivo, */
-        if (this.saberSiExiste(this.archivo)) {
-              let data = await this.leerArchivo(this.archivo);
+      
+    if (this.saberSiExiste(this.archivo)) {
+      let data = await this.leerArchivo(this.archivo);
 
-              /* se filtra el archivo para buscar el producto con la id ingresada */
-              let dataId = data.filter((item) => item.id === id);
-              if (dataId.length === 0) {
-                    /* si no existe se lanza un error */
-                    throw new Error("No se encontro el ID");
-              } else {
-                    /*se elimina el producto a editar */
-                    data = data.filter((item) => item.id !== id);
-                    /*y se agrega uno nuevo con la misma id esditado*/
-                    dataId = { id: id, ...contenido };
-                    data.push(dataId);
-                    this.escribirArchivo(this.archivo, data);
-                    console.log(`se modifico la Id:${id}`);
+         
+      let dataId = data.filter((item) => item.id === id);
+        if (dataId.length === 0) {
+           
+             throw new Error("No se encontro el ID");
+        } else {
+                  
+          data = data.filter((item) => item.id !== id);
+          dataId = { id: id, ...contenido };
+          data.push(dataId);
+          this.escribirArchivo(this.archivo, data);
+          console.log(`se modifico la Id:${id}`);
               }
         }
   } catch (error) {
