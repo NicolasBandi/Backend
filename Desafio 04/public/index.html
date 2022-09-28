@@ -6,32 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/main.css">
-  <title>Nicolas Pedicino</title>
+  <link rel="shortcut icon" type="image/x-icon">
 </head>
 
 <body>
-  <div class="contenedorPrincipar contenedor">
-    <div class="contenedorPost contenedor">
-      <h2> POST</h2>
-      <div>
-      <form action="http://localhost:61906/api/productos" method="post">
-        <div class="conteiner">
+  <div class="container contenedor">
+    <h1>Desafio 4</h1>
+    <div class="subtitlex contenedor">
+      <h2>Formulario agregar Productos por POST</h2>
+      <form action="http://localhost:55067/api/productos" method="post">
+        <div class="contenedor">
           <label for="title">Nombre del Producto</label>
-          <input type="text" name="title" placeholder="nombre del producto " required>
+          <input type="text" name="title" placeholder="Ingrese el nombre del producto " required>
         </div>
-        <div class="conteiner">
+        <div class="contenedor">
           <label for="price">Precio del Producto</label>
-          <input type="number" name="price" placeholder="precio del producto" required>
+          <input type="number" name="price" placeholder="Ingrese el precio del producto" required>
         </div>
-        <div class="conteiner">
+        <div class="contenedor">
           <label for="thumbnail">Imagen del Producto</label>
-          <input type="text" name="thumbnail" placeholder="Link de la imagen del producto" required>
+          <input type="text" name="thumbnail" placeholder="Ingrese el  Link de la imagen del producto" required>
         </div>
-        <div class="conteiner">
+        <div class="contenedor">
           <input type="submit" value="Guardar">
         </div>
       </form>
-    </div>
     </div>
 
   </div>
