@@ -117,7 +117,7 @@
             data.forEach( (mensaje) => {
                 $('#historial-mensajes').append(
                 `
-                <small style="display:block"> - <em style="color:#9f9f9f">[${mensaje.date}]</em> <strong style="color:red">${mensaje.email}</strong>: ${mensaje.message} </small>
+                <small style="display:block"> - <strong style="color:blue">${mensaje.email}</strong><em style="color:red">[${mensaje.date}]</em><strong style="color:green">: ${mensaje.message} </strong></small>
                 `
                 )
             })
@@ -129,7 +129,7 @@
             data.forEach( (mensaje) => {
                 $('#historial-mensajes').append(
                 `
-                <small style="display:block"> - <em style="color:#9f9f9f">[${mensaje.date}]</em> <strong style="color:red">${mensaje.email}</strong>: ${mensaje.message} </small>
+               <small style="display:block"> - <strong style="color:blue">${mensaje.email}</strong><em style="color:red">[${mensaje.date}]</em><strong style="color:green">: ${mensaje.message} </strong></small>
                 `
                 )
             })
