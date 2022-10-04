@@ -36,7 +36,7 @@ app.get('/', (req,res) => {
 
 const PORT = 8080;
 const server = app.listen(PORT, () => {
-console.log(` Escuchando el server :${PORT}`)
+console.log(`Escuchando el server :${PORT}`)
 })
 
 server.on('error', (err) => console.log(err))
