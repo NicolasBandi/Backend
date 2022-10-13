@@ -3,29 +3,37 @@
 POST http://localhost:8080/api/productos/ HTTP/1.1
 Content-Type: application/json
 
-{"title":"Matrix","price":1300,"description":"Some description for product 3","code":"XP-3","image":"UrlProduct3.com","stock":100}
+{"title":"Jumanj","price":1300,"description":"Some description for product 3","code":"XP-3","image":"UrlProduct3.com","stock":100}
 ### get
 
-GET http://localhost:8080/api/productos/1 HTTP/1.1
+GET http://localhost:8080/api/productos/ HTTP/1.1
 
 
 
 ### put
 
-PUT  http://localhost:8080/api/productos/1 HTTP/1.1
+PUT  http://localhost:8080/api/productos/5 HTTP/1.1
 Content-Type: application/json
-
 
 ### delete
 
-DELETE http://localhost:8080/api/productos/4 HTTP/1.1
+DELETE http://localhost:8080/api/productos/5 HTTP/1.1
 
 //Carrito
 
 ### post
 
-POST http://localhost:8080/api/carrito/6/productos HTTP/1.1
+POST http://localhost:8080/api/carrito/ HTTP/1.1
 Content-Type: application/json
+
+### post
+
+POST http://localhost:8080/api/carrito/1/productos/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "id":1
+}
 
 
 ### get
@@ -33,13 +41,6 @@ Content-Type: application/json
 GET http://localhost:8080/api/carrito/1/productos HTTP/1.1
 
 
-
-### put
-
-PUT  http://localhost:8080/api/productos/1 HTTP/1.1
-Content-Type: application/json
-
-
 ### delete
 
-DELETE http://localhost:8080/api/carrito/1/productos/2 HTTP/1.1
+DELETE http://localhost:8080/api/carrito/3 HTTP/1.1
