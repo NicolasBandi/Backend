@@ -1,0 +1,24 @@
+<div class="d-grid col-4 bg-light">
+    {{#if isEmpty}}
+        <h3 class="ms-3 mt-2 me-3 mb-3 bg-warning bg-opacity-10" style="color:#8B8000">No hay Productos</h3>
+    {{else}}
+        <table id="table-products" class="table table-dark align-middle d-flex me-3 ms-3">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th class="text-center">Precio</th>
+                    <th class="text-center">Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productos}}
+                    <tr>
+                        <td class="align-middle">{{this.title}}</td>
+                        <td class="text-center align-middle">{{this.price}}</td>
+                        <td class="text-center align-middle"><img style="width: 25%" src={{this.thumbnail}} alt=""></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+</div>
