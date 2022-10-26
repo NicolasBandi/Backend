@@ -1,0 +1,185 @@
+
+Se crea la base de datos llamada "ecommerce"
+
+use ecommerce
+
+Creo 2 colecciones y agrego 10 documentos
+
+db.mensajes.insertMany([
+    {
+        _id: 1,
+        email: "CoderHouse",
+        message: "Bienvenidos",
+        date: "25/10/2022 20:08:22",
+    },
+    {
+        _id: 2,
+        email: "nicolas@gmail.com",
+        message: "Hola, como estas?",
+        date: "25/10/2022 20:09:54",
+    },
+    {
+        _id: 3,
+        email: "victor@gmail.com",
+        message: "Hola, bien y vos, como va todo?",
+        date: "25/10/2022 20:10:43",
+    },
+    {
+        _id: 4,
+        email: "diego@gmail.com",
+        message: "Buenas, como andan tanto tiempo?",
+        date: "25/10/2022 20:11:32",
+    },
+    {
+        _id: 5,
+        email: "nicolas@gmail.com",
+        message: "Todo bien",
+        date: "25/10/2022 20:11:56",
+    },
+    {   _id: 6,   
+        email: "victor@gmail.com",
+        message: "Todo tranqui por aca",
+        date: "25/10/2022 20:12:22",
+    },
+    {   _id: 7,
+        email: "diego@gmail.com",
+        message: "Que andan haciendo?",
+        date: "25/10/2022 20:13:43",
+    },
+    {   _id: 8,
+        email: "victor@gmail.com",
+        message: "Por entrar a jugar un lol, se suman?",
+        date: "25/10/2022 20:14:51",
+    },
+    {   _id: 9,
+        email: "nico@gmail.com",
+        message: "No me gusta",
+        date: "25/10/2022 20:15:23",
+    },
+    {   _id: 10,
+        email: "diego@gmail.com",
+        message: "No lo tengo",
+        date: "25/10/2022 20:16:11",
+    },
+])
+
+db.productos.insertMany([
+    {
+        _id: 1,
+        title: "Pelicula 1",
+        price: 120,
+        thumbnail: "pelicula1.png",
+    },
+    {
+        _id: 2,
+        title: "Pelicula 2",
+        price: 580,
+        thumbnail: "pelicula2.png",
+    },
+    {
+        _id: 3,
+        title: "Pelicula 3",
+        price: 900,
+        thumbnail: "pelicula3.png",
+    },
+    {
+        _id: 4,
+        title: "Pelicula 4",
+        price: 1280,
+        thumbnail: "pelicula4.png",
+    },
+    {
+        _id: 5,
+        title: "Pelicula 5",
+        price: 1700,
+        thumbnail: "pelicula5.png",
+    },
+    {
+        _id: 6,
+        title: "Pelicula 6",
+        price: 2300,
+        thumbnail: "pelicula6.png",
+    },
+    {
+        _id: 7,
+        title: "Pelicula 7",
+        price: 2860,
+        thumbnail: "pelicula7.png",
+    },
+    {
+        _id: 8,
+        title: "Pelicula 8",
+        price: 3350,
+        thumbnail: "pelicula8.png",
+    },
+    {
+        _id: 9,
+        title: "Pelicula 9",
+        price: 4320,
+        thumbnail: "pelicula9.png",
+    },
+    {
+        _id: 10,
+        title: "Pelicula 10",
+        price: 4990,
+        thumbnail: "pelicula10.png",
+    },
+])
+
+Listamos los documentos de cada coleccion con los comandos:
+
+db.mensajes.find({})
+db.productos.find({})
+
+Muestro la cantidad de documentos en cada una de las colecciones con los comandos:
+
+db.mensajes.countDocuments({})
+db.productos.countDocuments({})
+
+Agrego un producto mas a la coleccion de productos con el comando: 
+
+db.productos.insertOne({
+    _id: 11,
+    title: "Pelicula 11",
+    price: 2500,
+    thumbnail: "pelicula11.png",
+})
+
+Realizo consulta de productos con precio menor a 1000 :
+
+db.productos.find({ price: { $lt: 1000 } })
+
+Realizo consulta de productos con precio entre 1000 y 3000 :
+
+db.productos.find({ $and: [ { price: { $gt: 1000 } }, { price: { $lt: 3000 } } ] })
+
+Realizo consulta de productos con precio mayor a 3000:
+
+db.productos.find({ price: { $gt: 3000 } })
+
+Realizo consulta de productos que me trae el tercer producto mas barato:
+
+db.productos.find().sort({ price: 1 }).limit(1).skip(2)
+
+Actualizo todos los productos y les agrego un stock de 100 a todos :
+
+db.productos.updateMany({}, { $set: { stock: 100 } })
+
+Cambio el stock a 0 a los productos con precio mayor a 4000 :
+
+db.productos.updateMany({ price: { $gt: 4000 } }, { $set: { stock: 0 } })
+
+Borro los productos con precio menor a 1000 :
+
+db.productos.deleteMany({ price: { $lt: 1000 } })
+
+Se debe crear un usuario 'pepe' clave: 'asd456' que sólo pueda leer la base de datos ecommerce y verificar que pepe no pueda cambiar la información.
+
+use.admin
+db.createUser({
+    user: 'pepe',
+    pwd: 'asd456',
+    roles: [
+        { role: 'read', db: 'ecommerce'}
+    ]
+})
