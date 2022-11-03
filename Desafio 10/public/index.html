@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <title>Desafio 10 - Segunda Entrega Final</title>
+</head>
+<body>
+
+    <main class="container-fluid">
+        <h2>Ingreso de Productos</h2>
+        <form action="http://localhost:8080/api/productos" method="post">
+            <label for="nombre"><i><b>Nombre</b></i></label>
+            <input id="input-nombre" type="text" name="nombre" required placeholder="Pelicula"/>
+            <label for="descripcion"><i><b>Descripcion</b></i></label>
+            <input id="input-descripcion" type="text" name="descripcion" required placeholder="Descripcion"/>
+            <label for="codigo"><i><b>Codigo</b></i></label>
+            <input id="input-codigo" type="text" name="codigo" required placeholder="Codigo"/>
+            <label for="foto"><i><b>Foto URL</b></i></label>
+            <input id="input-foto" type="text" name="foto" required placeholder="https://http2.mlstatic.com/D_NQ_NP_662700-MLA50929944161_072022-O.webp"/>
+            <label for="precio"><i><b>Precio</b></i></label>
+            <input id="input-precio" type="text" name="precio" required placeholder="15000"/>
+            <label for="stock"><i><b>Stock</b></i></label>
+            <input id="input-stock" type="text" name="stock" required placeholder="Stock"/>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h2>Productos</h2>
+        <div class="grid" id="cards">
+        </div>
+
+        <h2>Carrito</h2>
+
+        <label for="carrito"><i><b>Boton para crear su carrito de compras</b></i></label>
+        <button id="create-carrito">Crear carrito</button>
+
+        <form action="" method="get">
+            <label for="carrito"><i><b>Ingrese ID de carrito, luego agregue los productos. Para visualizarlo presione "Enviar"</b></i></label>
+            <input id="input-carrito" type="text" name="carrito" required placeholder=""/>
+            <button id="btn-carrito" type="submit">Enviar</button>
+        </form>
+        
+      
+
+    </main>
+    
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script> -->
+    <script src="/js/script.js"></script>
+</body>
+</html>

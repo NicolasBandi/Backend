@@ -1,0 +1,22 @@
+[
+  {
+    "id": 2,
+    "timestamp": 1667452545851,
+    "nombre": "Doctor Strange In The Multiverse Of Madness 4k Ultra Hd + Br",
+    "descripcion": "DC",
+    "codigo": "1",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_662700-MLA50929944161_072022-O.webp",
+    "precio": "15000",
+    "stock": "4"
+  },
+  {
+    "id": 3,
+    "timestamp": 1667452604098,
+    "nombre": "The Batman ",
+    "descripcion": "DC",
+    "codigo": "2",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_754034-MLA50149807643_052022-O.webp",
+    "precio": "12000",
+    "stock": "4"
+  }
+]
