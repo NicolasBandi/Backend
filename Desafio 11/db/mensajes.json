@@ -1,0 +1,20 @@
+[
+  {
+    "id": "mensajes",
+    "mensajes": [
+      {
+        "email": "Nico@gmail.com",
+        "author": {
+          "id": "Nico@gmail.com",
+          "nombre": "Nicolas",
+          "apellido": "Pedicino",
+          "edad": "0",
+          "alias": "Nico",
+          "avatar": ""
+        },
+        "text": "Bienvenidos",
+        "date": "08/11/2022 00:00:00"
+      }
+    ]
+  }
+]
