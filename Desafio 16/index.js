@@ -19,6 +19,7 @@ import routers from './routers/index.js'
 import UserModel from './models/user.js'
 import { isValidPassword, encryptPassword } from './bcrypt.js';
 import { initSocket } from './socket.js'
+import logger from './logger.js'
 
 const opts = {
     default: {
@@ -136,13 +137,19 @@ if (mode === 'cluster' && cluster.isPrimary) {
     
     app.use('/api', routers);
 
+    // Ruta para loggear rutas invalidas
+    app.get('*', function (req, res) { 
+        logger.warn(`Ruta ${req.path} metodo GET`)
+        res.status(404).send(`${req.path} not found`);
+    })
+
     const server = http.createServer(app);
     initSocket(server);
     
-    //middleware de manejo de errores
+    // Middleware de manejo de errores
     app.use(function (err, req, res, next) {
         console.error(err.stack)
-        res.status(500).send('Something broke!')
+        res.status(500).send(err.stack)
     })
     
     server.listen(PORT, () => {
