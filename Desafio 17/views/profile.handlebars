@@ -1,0 +1,52 @@
+<div class="d-flex col-12 bg-success text-dark bg-opacity-25">
+        <h2 id="usuario" class="text-success ms-3 mt-2">Bienvenido</h2>
+        <button id="logout-boton" class="col-1 mb-3 mt-2 me-3 btn btn-warning ms-auto">Desloguear</button>
+</div>
+
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+        <li class="nav-item"><a href="http://localhost:8080/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="http://localhost:8080/api/productos/" class="nav-link">Productos</a></li>
+        <li class="nav-item"><a id="cart-link" href="#" class="nav-link">Carrito</a></li>
+        <li class="nav-item"><a href="http://localhost:8080/api/profile" class="nav-link active" aria-current="page">Profile</a></li>
+        </ul>
+    </header>
+</div>
+
+<div class="d-grid col-6 bg-primary bg-opacity-25">
+        <h2 class="text-primary ms-3 mt-2">Email: {{user.email}}</h2>
+        <h2 class="text-primary ms-3 mt-2">Nombre: {{user.name}}</h2>
+        <h2 class="text-primary ms-3 mt-2">Dirección: {{user.adress}}</h2>
+        <h2 class="text-primary ms-3 mt-2">Edad: {{user.age}}</h2>
+        <h2 class="text-primary ms-3 mt-2">Telefono: {{user.tel}}</h2>
+        <h2 class="text-primary ms-3 mt-2">Avatar: <img src="{{user.img}}"/></h2>
+</div>
+
+<script>
+    //Si estoy logueado, lo renderizo, sino redirijo al login
+    (function () {
+        fetch(`http://localhost:8080/api`)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            
+            const span = document.createElement('span');
+            span.innerText = ` ${data.email}`
+            usuario.appendChild(span);
+
+            const myURL = `http://localhost:8080/api/carrito/${data.cart}/productos`;
+            document.getElementById('cart-link').href = myURL;
+        })
+        .catch(error => {
+            console.log(error.message);
+            location.href = 'http://localhost:8080/api/login'
+        });
+    })();
+
+    const logout = document.getElementById('logout-boton');
+
+    logout.addEventListener('click', () => {
+        location.href = 'http://localhost:8080/api/sign-out'
+    })
+</script>

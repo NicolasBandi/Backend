@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Proyecto Final 3</title>
+</head>
+<body>
+
+    <div class="d-flex col-12 bg-success text-dark bg-opacity-25">
+        <h2 id="usuario" class="text-success ms-3 mt-2">Bienvenido</h2>
+        <button id="logout-boton" class="col-1 mb-3 mt-2 me-3 btn btn-warning ms-auto">Desloguear</button>
+    </div>
+
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="http://localhost:8080/api/productos/" class="nav-link">Productos</a></li>
+            <li class="nav-item"><a id="cart-link" href="#" class="nav-link">Carrito</a></li>
+            <li class="nav-item"><a href="http://localhost:8080/api/profile" class="nav-link">Profile</a></li>
+          </ul>
+        </header>
+      </div>
+
+    <main class="container-fluid">
+        <h2>Ingreso de Productos</h2>
+        <form action="http://localhost:8080/api/productos" method="post">
+            <label for="nombre"><i><b>Nombre</b></i></label>
+            <input id="input-nombre" type="text" name="nombre" required placeholder="Batman"/>
+            <label for="descripcion"><i><b>Descripcion</b></i></label>
+            <input id="input-descripcion" type="text" name="descripcion" required placeholder="Descripcion"/>
+            <label for="codigo"><i><b>Codigo</b></i></label>
+            <input id="input-codigo" type="text" name="codigo" required placeholder="Codigo"/>
+            <label for="foto"><i><b>Foto URL</b></i></label>
+            <input id="input-foto" type="text" name="foto" required placeholder="https://http2.mlstatic.com/D_NQ_NP_682063-MLA50693882882_072022-O.webp"/>
+            <label for="precio"><i><b>Precio</b></i></label>
+            <input id="input-precio" type="text" name="precio" required placeholder="10000"/>
+            <label for="stock"><i><b>Stock</b></i></label>
+            <input id="input-stock" type="text" name="stock" required placeholder="Stock"/>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h2>Productos</h2>
+        <div class="grid" id="cards">
+        </div>
+
+        <h2>Carrito</h2>
+
+        <label for="carrito"><i><b>Boton para crear su carrito de compras</b></i></label>
+        <button id="create-carrito">Crear carrito</button>
+
+        <form action="" method="get">
+            <label for="carrito"><i><b>Ingrese ID de carrito, a continuacion agregue los productos. Para verlo presione "Enviar"</b></i></label>
+            <input id="input-carrito" type="text" name="carrito" required placeholder=""/>
+            <button id="btn-carrito" type="submit">Enviar</button>
+        </form>
+        
+        <div class="grid" id="cart">
+        </div>
+
+    </main>
+    
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script> -->
+    <script src="/js/script.js"></script>
+</body>
+</html>

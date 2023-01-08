@@ -1,0 +1,101 @@
+<div class="d-flex col-12 bg-success text-dark bg-opacity-25">
+        <h2 id="usuario" class="text-success ms-3 mt-2">Bienvenido</h2>
+        <button id="logout-boton" class="col-1 mb-3 mt-2 me-3 btn btn-warning ms-auto">Desloguear</button>
+</div>
+
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+        <li class="nav-item"><a href="http://localhost:8080/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Productos</a></li>
+        <li class="nav-item"><a id="cart-link" href="#" class="nav-link">Carrito</a></li>
+        <li class="nav-item"><a href="http://localhost:8080/api/profile" class="nav-link">Profile</a></li>
+        </ul>
+    </header>
+</div>
+
+<h2>Productos</h2>
+<div class="grid" id="cards">
+    {{#each products}}
+        <article>
+            <header>{{this.nombre}}</header> 
+            <img src="{{this.foto}}" alt=""> <p>Precio: ${{this.precio}}</p>
+            <button class="boton-agregar" data-id={{this._id}}>Agregar</button>
+        </article>
+    {{/each}}
+</div>
+
+<script>
+    //Si estoy logueado, lo renderizo, sino redirijo al login
+    (function () {
+        fetch(`http://localhost:8080/api`)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+
+            const span = document.createElement('span');
+            span.innerText = ` ${data.email}`
+            usuario.appendChild(span);
+
+            const myURL = `http://localhost:8080/api/carrito/${data.cart}/productos`;
+            document.getElementById('cart-link').href = myURL;
+        })
+        .catch(error => {
+            console.log(error.message);
+            location.href = 'http://localhost:8080/api/login'
+        });
+    })();
+
+    const logout = document.getElementById('logout-boton');
+
+    logout.addEventListener('click', () => {
+        location.href = 'http://localhost:8080/api/sign-out'
+    })
+
+    // Consigo los elementos de mi backend, los sumo al array de productos
+    let products = [];
+    fetch('http://localhost:8080/api/productos/admin')
+        .then(response => response.json())
+        .then(data => {
+            
+            data.forEach(prod => {
+                let temp = {
+                    id: prod._id,
+                    timestamp: prod.timestamp,
+                    nombre: prod.nombre,
+                    descripcion: prod.descripcion,
+                    codigo: prod.codigo,
+                    foto: prod.foto,
+                    precio: prod.precio,
+                    stock: prod.stock,
+                }
+                products.push(temp);
+            })
+        })
+
+    const btnAgregar = document.getElementsByClassName('boton-agregar');
+
+    for (const btn of btnAgregar) {
+                btn.addEventListener('click', addProduct);
+    }
+
+    async function addProduct(event) {
+        let idProducto = event.target.getAttribute("data-id"); //obtengo el id del producto
+        let busqueda = products.find((producto) => producto.id == idProducto); //busco el id en el array de productos
+
+        const response = await fetch(`http://localhost:8080/api`);
+        const data = await response.json();
+
+        fetch(`http://localhost:8080/api/carrito/${data.cart}/productos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(busqueda),
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => console.log(error))
+    }
+</script>
