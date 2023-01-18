@@ -1,5 +1,8 @@
+# Desafio 16
+Este servicio permite crear 5 **productos** de manera aleatoria. Posee un servicio de chat usando sockets, y el mismo se obtiene desde el backend **normalizado**. Se debe ingresar con un usuario y una contraseña.
+
 ## Configuración
-Crear un archivo en la raíz proyecto con el nombre `.env` con el siguiente contenido:
+Primero debemos crear un archivo en la raíz proyecto con el nombre `.env` con el siguiente contenido:
 ```
 NODE_PORT=8080
 NODE_ENV=local
