@@ -1,4 +1,4 @@
-# Desafio 16
+# Desafio 19
 Este servicio permite crear 5 **productos** de manera aleatoria. Posee un servicio de chat usando sockets, y el mismo se obtiene desde el backend **normalizado**. Se debe ingresar con un usuario y una contraseña.
 
 ## Configuración
@@ -12,6 +12,9 @@ Acá estamos configurando una variable de entorno para nuestro proyecto las cual
 | ------ | ------ | ------ |
 | `NODE_ENV` | `local` | Entorno en el cual se ejecuta. |
 | `MONGODB_URI` | `path to db` | Ruta hacia la base de datos de MongoDB. |
+| `DAO_TARGET` | `mem, file, mongo` | Forma en la cual se guarda la persistencia de datos |
+| `DAO_TARGET_MSG` | `mem, file, mongo` | Forma en la cual se guarda la persistencia de datos |
+
 
 ## Ejecutar en producción
 ```sh
