@@ -1,4 +1,4 @@
-# Desafio 18
+# Desafio 20
 Este es un servicio backend que permite el **manejo de productos**. Permite `crear`, `obtener`, `actualizar` y `eliminar` **productos**.
 
 ## Configuración
@@ -10,8 +10,6 @@ ENV=local
 Acá estamos configurando una variable de entorno para nuestro proyecto las cuales se especifican a continuación:
 | VARIABLE | VALOR DEFAULT | DESCRIPCIÓN |
 | ------ | ------ | ------ |
-| `PORT` | `8080` | Puerto en el cual se ejecuta el servidor. |
-| `ENV` | `local` | Entorno en el cual se ejecuta. |
 | `MONGODB_URI` | `path to db` | Ruta hacia la base de datos de MongoDB. |
 | `DAO_TARGET` | `mem, file, mongo` | Forma en la cual se guarda la persistencia de datos |
 
@@ -26,7 +24,7 @@ npm start
 npm run dev
 ```
 
-## Ejecutar test
+## Ejecutar test (Mocha)
 ```sh
 npm test
 ```
